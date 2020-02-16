@@ -6,6 +6,9 @@
 
 基于 `vue-cli 2.6` 进行构建，计划中是个前端项目
 
+## 访问该项目（如果开着的话）
+- [106.54.86.96:9528](https://106.54.86.96:9528)
+
 ## 原项目
 
 - github [vue-element-template](https://github.com/PanJiaChen/vue-admin-template)

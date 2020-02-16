@@ -1,38 +1,124 @@
 <template>
-  <el-table :data="tableData" border style="width: 60%">
-    <el-table-column prop="name" label="名称" align="center" width="180"></el-table-column>
-    <el-table-column prop="image" label="" align="center">
-      <template v-slot:default="scope">
-        <img :src="avatar" style="width: 36px;height:36px">
-      </template>
-    </el-table-column>
-  </el-table>
+  <div>
+    <el-row type="flex" justify="center">
+      <el-col :span="2"/>
+      <el-col v-for="nameW in names[0]" :key="nameW" :span="5">
+        <el-card
+          class="weapon-card"
+        >
+          <div class="weapon-image">
+            <el-image
+              class="weapon-image-inner"
+              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
+              fit="contain"
+            />
+          </div>
+          <div class="weapon-name">
+            <el-button type="text">{{ nameW }}</el-button>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <br>
+    <el-row type="flex" justify="center">
+      <el-col :span="2"/>
+      <el-col v-for="nameW in names[1]" :key="nameW" :span="5">
+        <el-card
+          class="weapon-card"
+        >
+          <div class="weapon-image">
+            <el-image
+              class="weapon-image-inner"
+              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
+              fit="contain"
+            />
+          </div>
+          <div class="weapon-name">
+            <el-button type="text">{{ nameW }}</el-button>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <br>
+    <el-row type="flex" justify="center">
+      <el-col :span="2"/>
+      <el-col v-for="nameW in names[2]" :key="nameW" :span="5">
+        <el-card
+          class="weapon-card"
+        >
+          <div class="weapon-image">
+            <el-image
+              class="weapon-image-inner"
+              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
+              fit="contain"
+            />
+          </div>
+          <div class="weapon-name">
+            <el-button type="text">{{ nameW }}</el-button>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <br>
+    <el-row type="flex" justify="center">
+      <el-col :span="2"/>
+      <el-col v-for="nameW in names[3]" :key="nameW" :span="5">
+        <el-card
+          class="weapon-card"
+        >
+          <div class="weapon-image">
+            <el-image
+              class="weapon-image-inner"
+              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
+              fit="contain"
+            />
+          </div>
+          <div class="weapon-name">
+            <el-button type="text">{{ nameW }}</el-button>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
-import avatar from "@/assets/images/weaponWith/GreatSword.png"
-
 export default {
   data() {
     return {
-      avatar: avatar,
-      tableData: [{
-        name: '大剑',
-        image: this.avatar
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      names: [['大剑', '太刀', '单手剑', '双剑'],
+        ['大锤', '狩猎笛', '长枪', '铳枪'],
+        ['斩击斧', '充能斧', '操虫棍'],
+        ['轻弩', '重弩', '弓']
+      ],
+      name: ['大剑', '太刀', '单手剑', '双剑',
+        '大锤', '狩猎笛', '长枪', '铳枪',
+        '斩击斧', '充能斧', '操虫棍',
+        '轻弩', '重弩', '弓']
     }
   }
 }
 </script>
+
+<style scoped>
+  .weapon-card {
+    width: 250px;
+    height: 280px;
+  }
+
+  .weapon-image {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .weapon-image-inner {
+    width: 200px;
+    height: 200px;
+  }
+
+  .weapon-name {
+    text-align: center;
+    position: relative;
+    top: 5px;
+  }
+</style>
