@@ -1,88 +1,31 @@
 <template>
   <div>
-    <el-row type="flex" justify="center">
-      <el-col :span="2"/>
-      <el-col v-for="nameW in names[0]" :key="nameW" :span="5">
-        <el-card
-          class="weapon-card"
-        >
-          <div class="weapon-image">
-            <el-image
-              class="weapon-image-inner"
-              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
-              fit="contain"
-            />
-          </div>
-          <div class="weapon-name">
-            <el-button type="text">{{ nameW }}</el-button>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <br>
-    <el-row type="flex" justify="center">
-      <el-col :span="2"/>
-      <el-col v-for="nameW in names[1]" :key="nameW" :span="5">
-        <el-card
-          class="weapon-card"
-        >
-          <div class="weapon-image">
-            <el-image
-              class="weapon-image-inner"
-              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
-              fit="contain"
-            />
-          </div>
-          <div class="weapon-name">
-            <el-button type="text">{{ nameW }}</el-button>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <br>
-    <el-row type="flex" justify="center">
-      <el-col :span="2"/>
-      <el-col v-for="nameW in names[2]" :key="nameW" :span="5">
-        <el-card
-          class="weapon-card"
-        >
-          <div class="weapon-image">
-            <el-image
-              class="weapon-image-inner"
-              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
-              fit="contain"
-            />
-          </div>
-          <div class="weapon-name">
-            <el-button type="text">{{ nameW }}</el-button>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <br>
-    <el-row type="flex" justify="center">
-      <el-col :span="2"/>
-      <el-col v-for="nameW in names[3]" :key="nameW" :span="5">
-        <el-card
-          class="weapon-card"
-        >
-          <div class="weapon-image">
-            <el-image
-              class="weapon-image-inner"
-              :src="require('../../assets/images/weaponWith/'+nameW+'.png')"
-              fit="contain"
-            />
-          </div>
-          <div class="weapon-name">
-            <el-button type="text">{{ nameW }}</el-button>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+    <div v-for="(nameRow, indexRow) in names" :key="indexRow">
+      <el-row type="flex" justify="center">
+        <el-col :span="2"/>
+        <el-col v-for="(name, index) in nameRow" :key="index" :span="5">
+          <el-card class="weapon-card">
+            <div class="weapon-image">
+              <el-image
+                class="weapon-image-inner"
+                :src="require('../../assets/images/weaponWith/'+name+'.png')"
+                fit="contain"
+              />
+            </div>
+            <div class="weapon-name">
+              <el-button type="text" @click="jump(name)">{{ name }}</el-button>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <br>
+    </div>
   </div>
 </template>
 
 <script>
+import { nameVal } from '@/utils/nameVal'
+
 export default {
   data() {
     return {
@@ -90,11 +33,12 @@ export default {
         ['大锤', '狩猎笛', '长枪', '铳枪'],
         ['斩击斧', '充能斧', '操虫棍'],
         ['轻弩', '重弩', '弓']
-      ],
-      name: ['大剑', '太刀', '单手剑', '双剑',
-        '大锤', '狩猎笛', '长枪', '铳枪',
-        '斩击斧', '充能斧', '操虫棍',
-        '轻弩', '重弩', '弓']
+      ]
+    }
+  },
+  methods: {
+    jump: function(name) {
+      this.$router.push({ path: '/weapon/' + nameVal[name] })
     }
   }
 }

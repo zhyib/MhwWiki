@@ -59,7 +59,7 @@ export const constantRoutes = [
     path: '/weapon',
     component: Layout,
     redirect: '/weapon',
-    meta: { title: 'Weapon', icon: 'weaponGreatSword' },
+    meta: { title: '武器', icon: 'weaponGreatSword' },
     children: [
       {
         path: '',
@@ -67,88 +67,88 @@ export const constantRoutes = [
         component: () => import('@/views/weapon/index')
       },
       {
-        path: 'weaponGreatSword',
+        path: 'GreatSword',
         name: 'GreatSword',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'GreatSword', icon: 'weaponGreatSword' }
+        meta: { title: '大剑', icon: 'weaponGreatSword' }
       },
       {
-        path: 'weaponLongSword',
+        path: 'LongSword',
         name: 'LongSword',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'LongSword', icon: 'weaponLongSword' }
+        meta: { title: '太刀', icon: 'weaponLongSword' }
       },
       {
-        path: 'weaponSwordAndShield',
+        path: 'SwordAndShield',
         name: 'Sns',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'SwordAndShield', icon: 'weaponSwordAndShield' }
+        meta: { title: '单手剑', icon: 'weaponSwordAndShield' }
       },
       {
-        path: 'weaponDualBlades',
+        path: 'DualBlades',
         name: 'DualBlades',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'DualBlades', icon: 'weaponDualBlades' }
+        meta: { title: '双剑', icon: 'weaponDualBlades' }
       },
       {
-        path: 'weaponHammer',
+        path: 'Hammer',
         name: 'Hammer',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'Hammer', icon: 'weaponHammer' }
+        meta: { title: '大锤', icon: 'weaponHammer' }
       },
       {
-        path: 'weaponHuntingHorn',
+        path: 'HuntingHorn',
         name: 'HuntingHorn',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'HuntingHorn', icon: 'weaponHuntingHorn' }
+        meta: { title: '狩猎笛', icon: 'weaponHuntingHorn' }
       },
       {
-        path: 'weaponLance',
+        path: 'Lance',
         name: 'Lance',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'Lance', icon: 'weaponLance' }
+        meta: { title: '长枪', icon: 'weaponLance' }
       },
       {
-        path: 'weaponGunlance',
+        path: 'Gunlance',
         name: 'Gunlance',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'Gunlance', icon: 'weaponGunlance' }
+        meta: { title: '铳枪', icon: 'weaponGunlance' }
       },
       {
-        path: 'weaponSwitchAxe',
+        path: 'SwitchAxe',
         name: 'SwitchAxe',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'SwitchAxe', icon: 'weaponSwitchAxe' }
+        meta: { title: '斩击斧', icon: 'weaponSwitchAxe' }
       },
       {
-        path: 'weaponChargeBlade',
+        path: 'ChargeBlade',
         name: 'ChargeBlade',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'ChargeBlade', icon: 'weaponChargeBlade' }
+        meta: { title: '充能斧', icon: 'weaponChargeBlade' }
       },
       {
-        path: 'weaponInsectGlaive',
+        path: 'InsectGlaive',
         name: 'InsectGlaive',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'InsectGlaive', icon: 'weaponInsectGlaive' }
+        meta: { title: '操虫棍', icon: 'weaponInsectGlaive' }
       },
       {
-        path: 'weaponLightBowgun',
+        path: 'LightBowgun',
         name: 'LightBowgun',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'LightBowgun', icon: 'weaponLightBowgun' }
+        meta: { title: '轻弩', icon: 'weaponLightBowgun' }
       },
       {
-        path: 'weaponHeavyBowgun',
+        path: 'HeavyBowgun',
         name: 'HeavyBowgun',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'HeavyBowgun', icon: 'weaponHeavyBowgun' }
+        meta: { title: '重弩', icon: 'weaponHeavyBowgun' }
       },
       {
-        path: 'weaponBow',
+        path: 'Bow',
         name: 'Bow',
         component: () => import('@/views/nested/menu1/menu1-1'),
-        meta: { title: 'Bow', icon: 'weaponBow' }
+        meta: { title: '弓', icon: 'weaponBow' }
       }
     ]
   },
