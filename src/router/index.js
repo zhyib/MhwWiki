@@ -69,7 +69,7 @@ export const constantRoutes = [
       {
         path: 'GreatSword',
         name: 'GreatSword',
-        component: () => import('@/views/nested/menu1/menu1-1'),
+        component: () => import('@/views/weapon/GreatSword'),
         meta: { title: '大剑', icon: 'weaponGreatSword' }
       },
       {
