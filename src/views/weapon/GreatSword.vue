@@ -16,19 +16,24 @@
         sortable
       />
       <el-table-column
-        prop="element"
-        label="属性"
+        prop="affinity"
+        label="会心"
+        sortable
       />
       <el-table-column
-        prop="elementVal"
-        label="属性值"
-      />
+        prop="element"
+        label="属性"
+      >
+        <template v-slot:default="scope">
+          {{ scope.row.element }} {{ scope.row.elementVal }}
+        </template>
+      </el-table-column>
       <el-table-column
         prop="sharpness"
         label="斩味"
       >
-        <template v-slot:default="scope">
-          <sharpness :content="scope.row.sharpness"></sharpness>
+        <template slot-scope="scope">
+          <sharpness :content="scope.row.sharpness" :full="scope.row.fullSharp"></sharpness>
         </template>
       </el-table-column>
       <el-table-column
@@ -36,9 +41,6 @@
         label="孔位"
       />
     </el-table>
-    <sharpness
-      :content="[3, 6, 2, 8, 3, 3, 3]"
-    />
   </div>
 </template>
 
@@ -56,10 +58,56 @@ export default {
         id: 1,
         name: '防卫队炎刃型大剑I',
         attack: 624,
+        affinity: '',
         element: '爆破',
         elementVal: 240,
-        sharpness: [3, 6, 2, 8, 3, 3, 3],
-        slot: ''
+        sharpness: [3, 6, 2, 14],
+        fullSharp: false,
+        slot: '',
+        children: [{
+          id: 11,
+          name: '防卫队炎刃型大剑II',
+          attack: 816,
+          affinity: '',
+          element: '爆破',
+          elementVal: 270,
+          sharpness: [3, 6, 2, 15, 4],
+          fullSharp: false,
+          slot: '',
+          children: [{
+            id: 111,
+            name: '防卫队炎刃型大剑III',
+            attack: 912,
+            affinity: '',
+            element: '爆破',
+            elementVal: 330,
+            sharpness: [5, 5, 5, 8, 12],
+            fullSharp: false,
+            slot: '',
+            children: [{
+              id: 1111,
+              name: '防卫队炎刃型大剑IV',
+              attack: 1008,
+              affinity: '',
+              element: '爆破',
+              elementVal: 360,
+              sharpness: [3, 5, 5, 8, 14],
+              fullSharp: false,
+              slot: '',
+              children: [{
+                id: 11111,
+                name: '防卫队炎刃型大剑V',
+                attack: 1056,
+                affinity: '',
+                element: '爆破',
+                elementVal: 390,
+                sharpness: [9, 3, 3, 11, 4, 10],
+                fullSharp: false,
+                slot: ''
+              }]
+            }]
+          }]
+        }]
       }, {
         id: 2,
         date: '2016-05-04',
