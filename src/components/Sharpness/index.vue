@@ -24,25 +24,13 @@
         <br>
       </div>
       <div slot="reference" style="width: 100%">
-        <div v-if="fullSharp">
-          <div
-            v-for="(block, index) in sharpness[0]"
-            :key="index"
-            class="colorBlock"
-            :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
-          >
-            &nbsp;
-          </div>
-        </div>
-        <div v-else>
-          <div
-            v-for="(block, index) in sharpness[4]"
-            :key="index"
-            class="colorBlock"
-            :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
-          >
-            &nbsp;
-          </div>
+        <div
+          v-for="(block, index) in sharpness[indexComputed]"
+          :key="index"
+          class="colorBlock"
+          :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
+        >
+          &nbsp;
         </div>
       </div>
     </el-popover>
@@ -69,7 +57,7 @@ export default {
         '#e3e3e3',
         '#8854f0',
         '#383838'
-      ]
+      ],
     }
   },
   computed: {
@@ -77,13 +65,14 @@ export default {
       // console.log('content' + this.content)
       // console.log('fullsharp' + this.fullSharp)
       const returnArray = []
-      if (this.content) {
+      console.log(this.content)
+      if (this.content.length < 8) {
         // 原始输入，匠5
+        // 这里是浅拷贝，草
         let ret = this.content
-        for (let i = 0; i < 7; i++) {
-          if (i >= this.content.length) {
-            ret.push(0)
-          }
+        const pushLength = 7 - this.content.length
+        for (let i = 0; i < pushLength; i++) {
+          ret.push(0)
         }
         ret.push(this.empty[0])
         returnArray.push(ret)
@@ -109,7 +98,28 @@ export default {
         // console.log(returnArray)
         return returnArray
       } else {
-        return [[], [], [], [], []]
+        // 已经计算过的从这里开始
+        let ret = this.content
+        returnArray.push(ret)
+        for (let j = 0; j < 5; j++) {
+          // 匠4开始递减
+          const temp = []
+          for (let k = 0; k < ret.length; k++) {
+            // copy
+            temp.push(ret[k].valueOf())
+          }
+          for (let k = 6; k >= 0; k--) {
+            if (temp[k] > 0) {
+              temp[k]--
+              temp[7] = this.empty[j + 1]
+              ret = temp
+              returnArray.push(temp)
+              break
+            }
+          }
+        }
+        // console.log(returnArray)
+        return returnArray
       }
     },
     empty() {
@@ -139,6 +149,9 @@ export default {
     },
     fullSharp() {
       return this.full
+    },
+    indexComputed() {
+      return this.fullSharp ? 0 : 5
     }
   }
 }

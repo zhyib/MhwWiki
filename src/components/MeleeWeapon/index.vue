@@ -1,5 +1,15 @@
 <template>
   <div>
+    <div style="float: right; padding-right: 50px; height: 30px; padding-top: 7px">
+      <el-checkbox-group v-model="checkList">
+        <el-checkbox label="element">
+          属性
+        </el-checkbox>
+        <el-checkbox label="defence">
+          防御
+        </el-checkbox>
+      </el-checkbox-group>
+    </div>
     <el-table
       :data="tableData"
       row-key="id"
@@ -10,13 +20,16 @@
       <el-table-column
         prop="name"
         label="武器名"
+        width="300px"
       />
       <el-table-column
         prop="attack"
         label="攻击"
       >
         <template v-slot:default="scope">
-          {{ scope.row.attack * multi }}
+          <div style="text-align: center">
+            {{ scope.row.attack * multi }}
+          </div>
         </template>
       </el-table-column>
       <el-table-column
@@ -24,28 +37,38 @@
         label="会心"
       />
       <el-table-column
+        v-if="checkList.includes('defence')"
+        key="1"
+        prop="defence"
+        label="防御"
+      />
+      <el-table-column
+        v-if="checkList.includes('element')"
+        key="2"
         prop="element"
         label="属性"
       >
         <template v-slot:default="scope">
-          <el-popover
-            placement="top-start"
-            width="150"
-            trigger="hover"
-            :disabled="scope.row.elderSeal == null"
-          >
-            <div style="text-align: center">
-              龙封力 {{ scope.row.elderSeal }}
-            </div>
-            <div slot="reference">
-              <div v-if="scope.row.elementHide">
-                （{{ scope.row.element }} {{ scope.row.elementVal }}）
+          <div style="text-align: center">
+            <el-popover
+              placement="top-start"
+              width="150"
+              trigger="hover"
+              :disabled="scope.row.elderSeal == null"
+            >
+              <div style="text-align: center">
+                龙封力 {{ scope.row.elderSeal }}
               </div>
-              <div v-else>
-                {{ scope.row.element }} {{ scope.row.elementVal }}
+              <div slot="reference">
+                <div v-if="scope.row.elementHide">
+                  （{{ scope.row.element }} {{ scope.row.elementVal }}）
+                </div>
+                <div v-else>
+                  {{ scope.row.element }} {{ scope.row.elementVal }}
+                </div>
               </div>
-            </div>
-          </el-popover>
+            </el-popover>
+          </div>
         </template>
       </el-table-column>
       <el-table-column
@@ -82,9 +105,26 @@ export default {
       default: null
     }
   },
+  data() {
+    return {
+      checkList: ['element', 'defence']
+    }
+  },
   computed: {
     tableData() {
       return this.data
+    }
+  },
+  watch: {
+    checkList(valArr) {
+      // this.tableKey--
+      console.log(this.tableKey)
+    }
+  },
+  methods: {
+    filterElement(value, row) {
+      console.log(row.element)
+      return row.element === value
     }
   }
 }
