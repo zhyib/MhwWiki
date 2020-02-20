@@ -24,13 +24,25 @@
         <br>
       </div>
       <div slot="reference" style="width: 100%">
-        <div
-          v-for="(block, index) in sharpness[4]"
-          :key="index"
-          class="colorBlock"
-          :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
-        >
-          &nbsp;
+        <div v-if="fullSharp">
+          <div
+            v-for="(block, index) in sharpness[0]"
+            :key="index"
+            class="colorBlock"
+            :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
+          >
+            &nbsp;
+          </div>
+        </div>
+        <div v-else>
+          <div
+            v-for="(block, index) in sharpness[4]"
+            :key="index"
+            class="colorBlock"
+            :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
+          >
+            &nbsp;
+          </div>
         </div>
       </div>
     </el-popover>
@@ -39,10 +51,13 @@
 
 <script>
 export default {
-  props: [
-    'content',
-    'fullSharp'
-  ],
+  props: {
+    content: {
+      type: Array,
+      default: null
+    },
+    full: Boolean
+  },
   data() {
     return {
       blockColor: [
@@ -59,20 +74,20 @@ export default {
   },
   computed: {
     sharpness() {
-      console.log('content ' + this.content)
+      // console.log('content' + this.content)
+      // console.log('fullsharp' + this.fullSharp)
       const returnArray = []
       if (this.content) {
         // 原始输入，匠5
         let ret = this.content
         for (let i = 0; i < 7; i++) {
-          if (i < this.content.length) {
-          } else {
+          if (i >= this.content.length) {
             ret.push(0)
           }
         }
         ret.push(this.empty[0])
         returnArray.push(ret)
-        console.log(returnArray)
+        // console.log(returnArray)
 
         for (let j = 0; j < 5; j++) {
           // 匠4开始递减
@@ -121,6 +136,9 @@ export default {
           return [40, 40, 40, 40, 40]
         }
       }
+    },
+    fullSharp() {
+      return this.full
     }
   }
 }
