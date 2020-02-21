@@ -2,11 +2,14 @@
   <div>
     <div style="float: right; padding-right: 50px; height: 30px; padding-top: 7px">
       <el-checkbox-group v-model="checkList">
-        <el-checkbox label="element">
-          属性
+        <el-checkbox label="affinity">
+          会心
         </el-checkbox>
         <el-checkbox label="defence">
           防御
+        </el-checkbox>
+        <el-checkbox label="element">
+          属性
         </el-checkbox>
       </el-checkbox-group>
     </div>
@@ -16,6 +19,7 @@
       border
       default-expand-all
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+      :indent="6"
     >
       <el-table-column
         prop="name"
@@ -33,6 +37,8 @@
         </template>
       </el-table-column>
       <el-table-column
+        v-if="checkList.includes('affinity')"
+        key="3"
         prop="affinity"
         label="会心"
       />
@@ -107,7 +113,7 @@ export default {
   },
   data() {
     return {
-      checkList: ['element', 'defence']
+      checkList: ['element', 'defence', 'affinity']
     }
   },
   computed: {
