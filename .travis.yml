@@ -2,17 +2,11 @@ language: node_js
 node_js:
   - "node"
 
-cache: npm
+install:
+  - npm install
 
-script: npm run build:prod
-
-deploy:
-provider: pages
-skip_cleanup: true
-github_token: $GITHUB_TOKEN
-local_dir: dist
-on:
-  branch: master
+script:
+  - npm run build
 
 after_success:
   - cd ./dist
@@ -22,3 +16,15 @@ after_success:
   - git add .
   - git commit -m "Automatically update from travis-ci"
   - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
+
+branches:
+  only:
+    - master
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
