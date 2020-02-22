@@ -41,7 +41,13 @@
         key="3"
         prop="affinity"
         label="会心"
-      />
+      >
+        <template v-slot:default="scope">
+          <div style="text-align: center">
+            {{ scope.row.affinity }}%
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column
         v-if="checkList.includes('defence')"
         key="1"

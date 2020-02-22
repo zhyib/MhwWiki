@@ -146,6 +146,27 @@ export default {
                             elementHide: true,
                             sharpness: [12, 3, 3, 6, 5, 8, 3],
                             slot: '11'
+                          }, {
+                            id: 17,
+                            rare: 10,
+                            name: '大刀【鸟】',
+                            attack: 260,
+                            affinity: 20,
+                            element: '毒',
+                            elementVal: 210,
+                            sharpness: [15, 3, 9, 3, 3, 5, 2],
+                            slot: '3',
+                            children: [{
+                              id: 18,
+                              rare: 10,
+                              name: '大刀【狼】',
+                              attack: 270,
+                              affinity: 25,
+                              element: '毒',
+                              elementVal: 240,
+                              sharpness: [14, 3, 9, 3, 3, 6, 2],
+                              slot: '3'
+                            }]
                           }]
                         }]
                       }]
