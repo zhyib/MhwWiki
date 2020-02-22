@@ -25,7 +25,7 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: process.env.NODE_ENV === 'production'
-    ? './'
+    ? './MhwWiki/'
     : './',
   outputDir: 'dist',
   assetsDir: 'static',
