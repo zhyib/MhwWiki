@@ -2,7 +2,7 @@
   <div>
     <div v-for="(nameRow, indexRow) in names" :key="indexRow">
       <el-row type="flex" justify="center">
-        <el-col :span="2"/>
+        <el-col :span="2" />
         <el-col v-for="(name, index) in nameRow" :key="index" :span="5">
           <el-card class="weapon-card">
             <div class="weapon-image">

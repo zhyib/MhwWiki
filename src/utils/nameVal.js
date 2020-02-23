@@ -12,5 +12,14 @@ export const nameVal = {
   操虫棍: 'InsectGlaive',
   轻弩: 'LightBowgun',
   重弩: 'HeavyBowgun',
-  弓: 'Bow'
+  弓: 'Bow',
+  水: 'fire',
+  火: 'water',
+  雷: 'thunder',
+  冰: 'ice',
+  龙: 'dragon',
+  毒: 'poison',
+  爆破: 'blast',
+  睡眠: 'sleep',
+  麻痹: 'paralysis'
 }

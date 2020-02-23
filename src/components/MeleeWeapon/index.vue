@@ -43,8 +43,11 @@
         label="会心"
       >
         <template v-slot:default="scope">
-          <div style="text-align: center">
+          <div v-if="scope.row.affinity" style="text-align: center">
             {{ scope.row.affinity }}%
+          </div>
+          <div v-else style="text-align: center">
+            -
           </div>
         </template>
       </el-table-column>
@@ -61,7 +64,7 @@
         label="属性"
       >
         <template v-slot:default="scope">
-          <div style="text-align: center">
+          <div v-if="scope.row.elementVal" style="text-align: center; vertical-align: center">
             <el-popover
               placement="top-start"
               width="150"
@@ -73,10 +76,13 @@
               </div>
               <div slot="reference">
                 <div v-if="scope.row.elementHide">
-                  （{{ scope.row.element }} {{ scope.row.elementVal }}）
+                  （
+                  <element-icon :content="scope.row.element" />
+                  {{ scope.row.elementVal }}）
                 </div>
                 <div v-else>
-                  {{ scope.row.element }} {{ scope.row.elementVal }}
+                  <element-icon :content="scope.row.element" />
+                  {{ scope.row.elementVal }}
                 </div>
               </div>
             </el-popover>
@@ -94,18 +100,26 @@
       <el-table-column
         prop="slot"
         label="孔位"
-      />
+      >
+        <template slot-scope="scope">
+          <div style="text-align: center">
+            {{ slotString(scope.row.slot) }}
+          </div>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
 import Sharpness from '@/components/Sharpness/index'
+import ElementIcon from '@/components/ElementIcon/index'
 
 export default {
   name: 'MeleeWeapon',
   components: {
-    'sharpness': Sharpness
+    'sharpness': Sharpness,
+    'element-icon': ElementIcon
   },
   props: {
     data: {
@@ -137,6 +151,17 @@ export default {
     filterElement(value, row) {
       console.log(row.element)
       return row.element === value
+    },
+    slotString(slot) {
+      if (slot) {
+        let str = slot[0]
+        for (let i = 1; i < slot.length; i++) {
+          str = str + '-' + slot[i]
+        }
+        return str
+      } else {
+        return ''
+      }
     }
   }
 }

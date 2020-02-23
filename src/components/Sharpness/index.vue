@@ -3,19 +3,19 @@
     <el-popover
       placement="top-start"
       width="300"
-      trigger="hover"
+      trigger="click"
       :disabled="fullSharp"
     >
-      <div v-for="(j, index2) in sharpness" :key="index2">
-        <div style="float: left">
-          匠{{ 5 - index2 }}&nbsp;&nbsp;
+      <div v-for="(row, index2) in sharpness" :key="index2">
+        <div style="float: left; width: 70px">
+          匠{{ 5 - index2 }}&nbsp;&nbsp;{{ rest(row) }}
         </div>
-        <div>
+        <div style="float: left; width: 200px">
           <div
-            v-for="(block, index) in j"
+            v-for="(block, index) in row"
             :key="index"
             class="colorBlock"
-            :style="'width:'+ block / 50 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
+            :style="'width:'+ block / 40 * 100 +'%; background-color:' + blockColor[index] + '; color:' + blockColor[index]"
           >
             &nbsp;
           </div>
@@ -58,6 +58,7 @@ export default {
         '#8854f0',
         '#383838'
       ],
+      colorName: ['红', '橙', '黄', '绿', '蓝', '白', '紫']
     }
   },
   computed: {
@@ -152,6 +153,15 @@ export default {
     },
     indexComputed() {
       return this.fullSharp ? 0 : 5
+    }
+  },
+  methods: {
+    rest(row) {
+      for (let i = 6; i >= 0; i--) {
+        if (row[i] !== 0) {
+          return (row[i] * 10).toString() + this.colorName[i]
+        }
+      }
     }
   }
 }
