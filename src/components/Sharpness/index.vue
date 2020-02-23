@@ -3,7 +3,7 @@
     <el-popover
       placement="top-start"
       width="300"
-      trigger="click"
+      trigger="hover"
       :disabled="fullSharp"
     >
       <div v-for="(row, index2) in sharpness" :key="index2">

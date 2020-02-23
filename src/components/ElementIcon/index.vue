@@ -1,7 +1,7 @@
 <template>
   <img
     class="element-icon"
-    :src="require('../../assets/images/elements/'+ realName +'.png')"
+    :src="require('../../assets/images/icon/element-'+ realName +'.png')"
   />
 </template>
 

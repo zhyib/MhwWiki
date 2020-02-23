@@ -1,5 +1,5 @@
 <template>
-  <melee-weapon :data="tableData" :multi="3.3" />
+  <melee-weapon :data="tableData" :multi="3.3" :weapon-name="'LongSword'" />
 </template>
 
 <script>
@@ -59,19 +59,19 @@ export default {
       }, {
         id: 6,
         rare: 1,
-        name: '铁刀I',
+        name: '铁刀 I',
         attack: 80,
         sharpness: [10, 5, 8, 2],
         children: [{
           id: 7,
           rare: 1,
-          name: '铁刀II',
+          name: '铁刀 II',
           attack: 90,
           sharpness: [8, 7, 3, 7],
           children: [{
             id: 8,
             rare: 2,
-            name: '铁刀III',
+            name: '铁刀 III',
             attack: 100,
             sharpness: [6, 7, 3, 9],
             children: [{
@@ -168,6 +168,70 @@ export default {
                               slot: '3'
                             }]
                           }]
+                        }, {
+                          id: 19,
+                          rare: 10,
+                          name: '王刀雷切',
+                          attack: 240,
+                          element: '雷',
+                          elementVal: 240,
+                          sharpness: [10, 8, 3, 3, 8, 8],
+                          slot: '2',
+                          children: [{
+                            id: 20,
+                            rare: 11,
+                            name: '王刀雷切·改',
+                            attack: 250,
+                            element: '雷',
+                            elementVal: 300,
+                            sharpness: [13, 3, 8, 4, 3, 7, 2],
+                            slot: '2',
+                            children: [{
+                              id: 21,
+                              rare: 12,
+                              name: '王牙刀【伏雷】',
+                              attack: 260,
+                              element: '雷',
+                              elementVal: 450,
+                              sharpness: [12, 3, 9, 3, 3, 8, 2],
+                              slot: '2'
+                            }]
+                          }]
+                        }]
+                      }]
+                    }, {
+                      id: 22,
+                      rare: 7,
+                      name: '灭尽龙太刀',
+                      attack: 190,
+                      element: '龙',
+                      elementVal: 90,
+                      elderSeal: '大',
+                      sharpness: [12, 12, 4, 5, 7],
+                      fullSharp: true,
+                      slot: '1',
+                      children: [{
+                        id: 23,
+                        rare: 8,
+                        name: '灭尽一刀',
+                        attack: 210,
+                        element: '龙',
+                        elementVal: 120,
+                        elderSeal: '大',
+                        sharpness: [11, 12, 4, 5, 8],
+                        fullSharp: true,
+                        slot: '1',
+                        children: [{
+                          id: 24,
+                          rare: 12,
+                          name: '灭尽一刀【绝】',
+                          attack: 290,
+                          element: '龙',
+                          elementVal: 180,
+                          elderSeal: '大',
+                          sharpness: [8, 3, 3, 11, 3, 12],
+                          fullSharp: true,
+                          slot: '1'
                         }]
                       }]
                     }]
