@@ -154,6 +154,18 @@ export const constantRoutes = [
   },
 
   {
+    path: '/monster',
+    component: Layout,
+    children: [
+      {
+        path: 'monster',
+        name: 'monster',
+        component: () => import('@/views/monster/index'),
+        meta: { title: '怪物', icon: 'form' }
+      }
+    ]
+  },
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
