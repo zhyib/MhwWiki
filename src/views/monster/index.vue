@@ -7,6 +7,8 @@
             ref="table"
             :data="fangData"
             :height="table"
+            highlight-current-row
+            @row-click="handleRowClick"
           >
             <el-table-column
               prop="icon"
@@ -86,8 +88,81 @@
         </el-collapse-item>
       </el-collapse>
     </el-col>
-    <el-col :span="8">
-      <div></div>
+    <el-col v-if="showData[0] !== undefined" :span="8">
+      <el-row>
+        <el-col :span="12">名称</el-col>
+        <el-col :span="12">{{ showData[0].name }}</el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="12">日文名</el-col>
+        <el-col :span="12">{{ showData[0].jName }}</el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="12">英文名</el-col>
+        <el-col :span="12">{{ showData[0].eName }}</el-col>
+      </el-row>
+
+      <el-table
+        :data="showData"
+      >
+        <el-table-column
+          label="血量">
+          <el-table-column
+            label="下位"
+            prop="hpL"
+          />
+          <el-table-column
+            label="上位"
+            prop="hpH"
+          />
+          <el-table-column
+            label="大师"
+            prop="hpM"
+          />
+          <el-table-column
+            label="捕获血量"
+            prop="capture"
+          >
+            <template v-slot:default="scope">
+              {{ scope.row.capture }}%
+            </template>
+          </el-table-column>
+        </el-table-column>
+      </el-table>
+      <el-table
+        :data="showData"
+      >
+        <el-table-column
+          label="愤怒">
+          <el-table-column
+            label="持续时间(s)"
+            prop="angerTime"
+          />
+          <el-table-column
+            label="攻击补正(%)"
+            prop="angerAtk"
+          />
+          <el-table-column
+            label="防御补正(%)"
+            prop="angerDef"
+          />
+          <el-table-column
+            label="速度补正(%)"
+            prop="angerSpd"
+          />
+        </el-table-column>
+      </el-table>
+
+      <el-table
+        :data="showData"
+      >
+        <el-table-column
+          prop="parts"
+        />
+        <el-table-column
+          prop="parts"
+        />
+      </el-table>
     </el-col>
   </el-row>
 </template>
@@ -105,7 +180,9 @@ export default {
         '兽龙种': true,
         '飞龙种': true
       },
+      showData: [],
       elements: ['火', '水', '雷', '冰', '龙', '毒', '眠', '麻', '绝'],
+      tableData: [],
       fangData: [{
         name: '贼龙',
         jName: 'ドスジャグラス',
@@ -120,14 +197,14 @@ export default {
         angerSpd: 110,
         parts: ['头', '颈', '身体', '身体（满腹）', '背', '前脚', '后脚', '尾'],
         weak: [
-          [80, 85, 75, 30, 0, 15, 20, 10],
-          [65, 70, 60, 20, 0, 5, 10, 5],
-          [50, 45, 40, 20, 0, 5, 10, 0],
-          [90, 95, 85, 30, 0, 15, 20, 10],
-          [45, 40, 35, 15, 0, 5, 5, 0],
-          [65, 60, 55, 25, 0, 10, 15, 5],
-          [45, 40, 35, 15, 0, 0, 5, 0],
-          [45, 45, 40, 15, 0, 0, 5, 0]
+          [80, 65, 50, 90, 45, 65, 45, 45],
+          [85, 70, 45, 95, 40, 60, 40, 45],
+          [75, 60, 40, 85, 35, 55, 35, 40],
+          [30, 20, 20, 30, 15, 25, 15, 15],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [20, 10, 10, 20, 5, 15, 5, 5],
+          [15, 5, 5, 15, 5, 10, 0, 0],
+          [10, 5, 0, 10, 0, 5, 0, 0]
         ],
         summary: [3, 0, 2, 2, 1, 3, 3, 3, 3, 3]
       }
@@ -152,6 +229,9 @@ export default {
       for (const i in this.showStatus) {
         this.showStatus[i] = true
       }
+    },
+    handleRowClick(row, column, event) {
+      this.showData.push(row)
     }
   }
 }
