@@ -2,11 +2,11 @@
   <div class="dashboard-container">
     <h1>进度一览</h1>
     <el-card class="box-card">
-      <div slot="header">
+      <div slot="header" class="cardTitle">
         <span>样式</span>
       </div>
       <div v-for="(item, index) in styleCard" :key="index">
-        <el-row>
+        <el-row class="cardRow">
           <el-col :span="6">
             {{ item.name }}
           </el-col>
@@ -18,11 +18,11 @@
     </el-card>
     <br>
     <el-card class="box-card">
-      <div slot="header">
+      <div slot="header" class="cardTitle">
         <span>数据</span>
       </div>
       <div v-for="(item, index) in dataCard" :key="index">
-        <el-row>
+        <el-row class="cardRow">
           <el-col :span="6">
             {{ item.name }}
           </el-col>
@@ -34,16 +34,16 @@
     </el-card>
     <br>
     <el-card class="box-card">
-      <div slot="header">
-        <span>样式</span>
+      <div slot="header" class="cardTitle">
+        <span>其它</span>
       </div>
       <div v-for="(item, index) in totalCard" :key="index">
-      <el-row>
+        <el-row class="cardRow">
           <el-col :span="6">
             {{ item.name }}
           </el-col>
           <el-col :span="18">
-            <el-progress :percentage="item.progress" />
+            <el-progress :percentage="item.progress" :status="item.status" />
           </el-col>
         </el-row>
       </div>
@@ -95,18 +95,31 @@ export default {
     &-container {
       margin: 30px;
     }
+
     &-text {
       font-size: 30px;
       line-height: 46px;
     }
   }
+
   .text {
     font-size: 14px;
   }
+
   .item {
     margin-bottom: 18px;
   }
+
   .box-card {
     width: 480px;
+  }
+
+  .cardTitle {
+    font-weight: bold;
+    color: #5a5e66;
+  }
+
+  .cardRow {
+    margin-bottom: 5px;
   }
 </style>
