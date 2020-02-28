@@ -53,9 +53,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import SvgIcon from '@/components/SvgIcon/index'
 
 export default {
   name: 'Dashboard',
+  components: {
+    'svg-icon': SvgIcon
+  },
   data() {
     return {
       activeName: 'first',
@@ -75,9 +79,13 @@ export default {
       }],
       totalCard: [{
         name: '路由调整',
-        progress: 10
+        progress: 40
       }, {
-        name: '删除多余功能',
+        name: '删除登录功能',
+        progress: 100,
+        status: 'success'
+      }, {
+        name: '小图标转换Svg',
         progress: 0
       }]
     }

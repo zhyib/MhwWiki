@@ -29,7 +29,9 @@ export default {
       return `#icon-${this.iconClass}`
     },
     svgClass() {
+      // 此处 class 用来设置样式
       if (this.className) {
+        console.log('svg-icon ' + this.className)
         return 'svg-icon ' + this.className
       } else {
         return 'svg-icon'
