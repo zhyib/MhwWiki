@@ -13,13 +13,13 @@ export const nameVal = {
   轻弩: 'LightBowgun',
   重弩: 'HeavyBowgun',
   弓: 'Bow',
-  水: 'water',
-  火: 'fire',
-  雷: 'thunder',
-  冰: 'ice',
-  龙: 'dragon',
-  毒: 'poison',
-  爆破: 'blast',
-  睡眠: 'sleep',
-  麻痹: 'paralysis'
+  火: 'Fire',
+  水: 'Water',
+  雷: 'Thunder',
+  冰: 'Ice',
+  龙: 'Dragon',
+  毒: 'Poison',
+  爆破: 'Blast',
+  睡眠: 'Sleep',
+  麻痹: 'Paralysis'
 }

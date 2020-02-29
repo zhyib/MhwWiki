@@ -24,7 +24,7 @@
       <el-table-column
         prop="name"
         label="武器名"
-        width="300px"
+        width="350px"
       >
         <template v-slot:default="scope">
           <weapon-rare :weapon-name="weaponName" :weapon-rarity="scope.row.rare" />

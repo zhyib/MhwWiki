@@ -7,10 +7,10 @@
       </div>
       <div v-for="(item, index) in styleCard" :key="index">
         <el-row class="cardRow">
-          <el-col :span="6">
+          <el-col :span="leftSpan">
             {{ item.name }}
           </el-col>
-          <el-col :span="18">
+          <el-col :span="rightSpan">
             <el-progress :percentage="item.progress" />
           </el-col>
         </el-row>
@@ -23,10 +23,10 @@
       </div>
       <div v-for="(item, index) in dataCard" :key="index">
         <el-row class="cardRow">
-          <el-col :span="6">
+          <el-col :span="leftSpan">
             {{ item.name }}
           </el-col>
-          <el-col :span="18">
+          <el-col :span="rightSpan">
             <el-progress :percentage="item.progress" />
           </el-col>
         </el-row>
@@ -39,10 +39,10 @@
       </div>
       <div v-for="(item, index) in totalCard" :key="index">
         <el-row class="cardRow">
-          <el-col :span="6">
+          <el-col :span="leftSpan">
             {{ item.name }}
           </el-col>
-          <el-col :span="18">
+          <el-col :span="rightSpan">
             <el-progress :percentage="item.progress" :status="item.status" />
           </el-col>
         </el-row>
@@ -63,9 +63,11 @@ export default {
   data() {
     return {
       activeName: 'first',
+      leftSpan: 8,
+      rightSpan: 16,
       styleCard: [{
         name: '武器',
-        progress: 80
+        progress: 90
       }, {
         name: '怪物',
         progress: 50
@@ -86,7 +88,8 @@ export default {
         status: 'success'
       }, {
         name: '小图标转换Svg',
-        progress: 0
+        progress: 100,
+        status: 'success'
       }]
     }
   },
@@ -119,7 +122,7 @@ export default {
   }
 
   .box-card {
-    width: 480px;
+    width: 520px;
   }
 
   .cardTitle {
@@ -128,6 +131,6 @@ export default {
   }
 
   .cardRow {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 </style>

@@ -1,15 +1,19 @@
 <template>
-  <img
+  <svg-icon
     class="element-icon"
-    :src="require('../../assets/images/icon/element-'+ realName +'.png')"
+    :icon-class="realName"
   />
 </template>
 
 <script>
 import { nameVal } from '@/utils/nameVal'
+import SvgIcon from '@/components/SvgIcon/index'
 
 export default {
   name: 'ElementIcon',
+  components: {
+    'svg-icon': SvgIcon
+  },
   props: {
     content: {
       type: String,
@@ -18,7 +22,7 @@ export default {
   },
   computed: {
     realName() {
-      return nameVal[this.content]
+      return 'element' + nameVal[this.content]
     }
   }
 }
@@ -26,7 +30,8 @@ export default {
 
 <style scoped>
   .element-icon {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5px;
   }
 </style>

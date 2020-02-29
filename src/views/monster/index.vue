@@ -231,7 +231,9 @@ export default {
       }
     },
     handleRowClick(row, column, event) {
-      this.showData.push(row)
+      if (this.showData.length !== 1) {
+        this.showData.push(row)
+      }
     }
   }
 }
