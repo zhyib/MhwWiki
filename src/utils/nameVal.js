@@ -21,5 +21,6 @@ export const nameVal = {
   毒: 'Poison',
   爆破: 'Blast',
   睡眠: 'Sleep',
-  麻痹: 'Paralysis'
+  麻痹: 'Paralysis',
+  贼龙: 'GreatJagras'
 }

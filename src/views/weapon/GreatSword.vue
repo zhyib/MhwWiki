@@ -1,5 +1,5 @@
 <template>
-  <melee-weapon :data="tableData" :multi="4.8" />
+  <melee-weapon :data="tableData" :multi="4.8" :weapon-name="'GreatSword'" />
 </template>
 
 <script>

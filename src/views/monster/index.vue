@@ -12,7 +12,11 @@
           >
             <el-table-column
               prop="icon"
-            />
+            >
+              <template v-slot:default="scope">
+                <monster-icon :content="scope.row.name" style="width: 50px; height: 50px" />
+              </template>
+            </el-table-column>
             <el-table-column
               prop="name"
               label="名称"
@@ -168,8 +172,15 @@
 </template>
 
 <script>
+import MonsterIcon from '@/components/MonsterIcon/index'
+import ElementIcon from '@/components/ElementIcon/index'
+
 export default {
   name: 'Monster',
+  components: {
+    'monster-icon': MonsterIcon,
+    'element-icon': ElementIcon
+  },
   data() {
     return {
       activeNames: [],
@@ -181,7 +192,7 @@ export default {
         '飞龙种': true
       },
       showData: [],
-      elements: ['火', '水', '雷', '冰', '龙', '毒', '眠', '麻', '绝'],
+      elements: ['火', '水', '雷', '冰', '龙', '毒', '爆破', '睡眠', '麻痹', '气绝'],
       tableData: [],
       fangData: [{
         name: '贼龙',
@@ -206,7 +217,7 @@ export default {
           [15, 5, 5, 15, 5, 10, 0, 0],
           [10, 5, 0, 10, 0, 5, 0, 0]
         ],
-        summary: [3, 0, 2, 2, 1, 3, 3, 3, 3, 3]
+        summary: [3, 0, 2, 2, 1, 3, 3, 3, 3, 3, 3]
       }
       ]
     }
@@ -242,5 +253,11 @@ export default {
 <style>
   .el-collapse-item__content {
     padding-bottom: 0 !important;
+  }
+
+  .el-collapse-item__header {
+    margin-left: 15px;
+    font-weight: bold;
+    color: #606266;
   }
 </style>
