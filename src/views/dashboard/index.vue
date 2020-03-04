@@ -70,7 +70,7 @@ export default {
         progress: 90
       }, {
         name: '怪物',
-        progress: 50
+        progress: 70
       }],
       dataCard: [{
         name: '武器',
@@ -81,7 +81,7 @@ export default {
       }],
       totalCard: [{
         name: '路由调整',
-        progress: 40
+        progress: 60
       }, {
         name: '删除登录功能',
         progress: 100,
